@@ -1,0 +1,39 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+
+# Ambientes virtuais
+venv/
+env/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+
+# Streamlit
+.streamlit/config.toml
+
+# Arquivos sensíveis
+*.env
+*.key
+*.token
+
+# Arquivos gerados
+*.csv
+*.xlsx
+*.pdf
+*.json
+
+# Pastas temporárias de output
+output/
+temp/
+logs/
+
+# Jupyter Notebooks (caso use)
+.ipynb_checkpoints/
+
+# VSCode / IDE
+.vscode/
+.idea/
