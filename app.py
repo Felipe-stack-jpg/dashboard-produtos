@@ -1,4 +1,30 @@
 import streamlit as st
+import streamlit_authenticator as stauth
+import yaml
+from yaml.loader import SafeLoader
+
+# Configuração do login
+with open('auth_config.yaml') as file:
+    config = yaml.load(file, Loader=SafeLoader)
+
+authenticator = stauth.Authenticate(
+    config['credentials'],
+    config['cookie']['name'],
+    config['cookie']['key'],
+    config['cookie']['expiry_days'],
+)
+login_result = authenticator.login("main")
+if login_result is not None:
+    name, authenticator_status, username = login_result 
+
+    if authenticator_status is False:
+        st.error('Usuario ou senha invalidos')
+    elif authenticator_status is None:
+        st.warning('Por favor, insira suas credenciais')
+    elif authenticator_status:
+        authenticator.logout('Logout', 'sidebar')
+        st.sidebar.success(f'Bem vindo, {name}')
+
 
 st.set_page_config(page_title='Dashboard E-commerce', layout='wide')
 
