@@ -27,7 +27,8 @@ if not st.session_state.Logged_in:
             st.session_state.Logged_in = True
             st.session_state.username = username
             st.success(f'Bem vindo, {username}')
-            
+            st.rerun()
+
         else:
             st.error('Usuario ou senha incorretos')
             st.stop()
@@ -42,9 +43,7 @@ if st.session_state.Logged_in:
 
     #verificação do status da API
     if df is not None:
-        st.subheader('Dados brutos da API:')
-        st.dataframe(df)
-
+        
         #Sidebar com filtro de categoria
         categorias = df['category'].unique()
         categoria_selecionada = st.sidebar.multiselect(
